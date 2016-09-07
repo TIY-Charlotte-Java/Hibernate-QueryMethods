@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>E-mail</th>
+        <th>Category</th>
+        <th>Credit Card</th>
+        <th>CVV</th>
+        <th>Date</th>
+    </tr>
+    {{#purchases}}
+    {{#customers}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{email}}</td>
+        <td>{{category}}</td>
+        <td>{{creditcard}}</td>
+        <td>{{cvv}}</td>
+        <td>{{date}}</td>
+    </tr>
+    {{/customers}}
+    {{/purchases}}
+</table>
+
+</body>
+</html>
