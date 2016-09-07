@@ -1,15 +1,12 @@
 package com.theironyard;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -20,6 +17,7 @@ import java.util.Scanner;
  */
 @Controller
 public class HibernateQueryMethodsController {
+
     @Autowired
     CustomerRepository customers;
 
@@ -29,11 +27,13 @@ public class HibernateQueryMethodsController {
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, String category) {
         List<Purchase> itemList;
+
         if (category != null) {
             itemList = (List)items.findByCategory(category);
         } else {
             itemList = (List)items.findAll();
         }
+
         model.addAttribute("purchases", itemList);
         return "home";
     }
@@ -63,14 +63,11 @@ public class HibernateQueryMethodsController {
 
                 String line2 = fileScanner2.nextLine();
                 String[] columns2 = line2.split(",");
-                Integer custId = Integer.valueOf(columns2[0]);
 
                 Purchase purchase = new Purchase(columns2[1], columns2[2], Integer.valueOf(columns2[3]), columns2[4],
-                        customers.findOne(custId));
+                        customers.findOne(Integer.valueOf(columns2[0])));
                 items.save(purchase);
             }
         }
     }
-
-
 }
