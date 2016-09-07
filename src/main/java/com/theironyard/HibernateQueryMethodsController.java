@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -26,11 +27,14 @@ public class HibernateQueryMethodsController {
     PurchaseRepository items;
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String home(Model model) {
-        List<Purchase> itemList = (List)items.findAll();
-        List<Customer> customerList = (List)customers.findAll();
+    public String home(Model model, String category) {
+        List<Purchase> itemList;
+        if (category != null) {
+            itemList = (List)items.findByCategory(category);
+        } else {
+            itemList = (List)items.findAll();
+        }
         model.addAttribute("purchases", itemList);
-        model.addAttribute("customers", customerList);
         return "home";
     }
 
