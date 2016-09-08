@@ -2,18 +2,18 @@ package com.theironyard;
 
 import javax.persistence.*;
 
-//users class is an entity, stored in users table
+//customers class is an entity, stored in customers table
 @Entity
 @Table(name = "customers")
 public class Customer {
-    @Id //id is the primary key, it is a generated value.  db is in control.
+    @Id //id is the primary key, it is a generated value.
     @GeneratedValue
     int id;
 
     @Column(nullable = false, unique = true) // unique constraint, can't have two users with the same name.  this is a key constraint
             String name;
 
-    @Column(nullable = false, unique = true) // unique constraint, can't have two users with the same name.  this is a key constraint
+    @Column(nullable = false, unique = true) // ditto
             String email;
 
     public Customer() {
@@ -28,7 +28,7 @@ public class Customer {
     @Override
     public String toString() {
         return String.format("%s,  %s", this.name, this.email
-        );
+        ); //need to string override b/c customer object is in the purchase object
 
     }
 
