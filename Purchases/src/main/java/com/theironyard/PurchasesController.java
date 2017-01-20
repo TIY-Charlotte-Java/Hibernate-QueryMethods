@@ -25,16 +25,6 @@ public class PurchasesController {
     @Autowired
     PurchaseRepository purchases;
 
-  /*  @RequestMapping(path = "/", method = RequestMethod.GET)
-    public String home(Model model){
-        List<Purchase>
-        List<Customer> customerList = (List)customers.findAll();
-        List<Purchase> purchasesList = (List)customers.findAll();
-        model.addAttribute("customer", customerList);
-        model.addAttribute("purchase", purchasesList);
-        return "home";
-    }*/
-
      @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model, String category){
 
