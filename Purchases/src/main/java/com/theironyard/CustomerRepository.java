@@ -8,4 +8,5 @@ import org.springframework.data.repository.CrudRepository;
 
 // taking in the customer object and passing in the id
 public interface CustomerRepository extends  CrudRepository<Customer, Integer>{
+ Customer findById (int id);
 }

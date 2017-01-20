@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.annotation.PostConstruct;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -24,10 +25,26 @@ public class PurchasesController {
     @Autowired
     PurchaseRepository purchases;
 
-    @RequestMapping(path = "/", method = RequestMethod.GET)
+  /*  @RequestMapping(path = "/", method = RequestMethod.GET)
     public String home(Model model){
+        List<Purchase>
+        List<Customer> customerList = (List)customers.findAll();
+        List<Purchase> purchasesList = (List)customers.findAll();
+        model.addAttribute("customer", customerList);
+        model.addAttribute("purchase", purchasesList);
+        return "home";
+    }*/
 
+     @RequestMapping(path = "/", method = RequestMethod.GET)
+    public String home(Model model, String category){
 
+         List<Purchase> purchaseList;
+         if (category != null) {
+             purchaseList = purchases.findByCategory(category);
+         }else {
+             purchaseList = (List) purchases.findAll();
+         }
+         model.addAttribute("purchased", purchaseList);
         return "home";
     }
 
@@ -51,7 +68,8 @@ public class PurchasesController {
             while (fileScanner.hasNext()){
                 String line = fileScanner.nextLine();
                 String [] columns = line.split(",");
-                Purchase newPurchase = new Purchase(columns[1],(columns[2]), Integer.valueOf(columns[3]),
+                Purchase newPurchase = new Purchase(customers.findById(Integer.valueOf(columns[0])),columns[1],
+                        columns[2], Integer.valueOf(columns[3]),
                         columns[4]);
                 purchases.save(newPurchase);
             }

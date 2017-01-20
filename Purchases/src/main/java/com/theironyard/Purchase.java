@@ -13,11 +13,15 @@ public class Purchase {
     @GeneratedValue
     int id;
 
+
+    @ManyToOne // many different purchases can go to one customer
+     Customer customer;
+
     @Column(nullable = false)
     String date;
 
     @Column(nullable = false)
-    String credit_card;
+    String creditCard;
 
     @Column(nullable = false)
     int cvv;
@@ -25,26 +29,15 @@ public class Purchase {
     @Column(nullable = false)
     String category;
 
-    @ManyToOne // many different purchases can go to one customer
-    Customer customer;
-
+    public Purchase(Customer customer, String date, String creditCard, int cvv, String category) {
+        this.customer = customer;
+        this.date = date;
+        this.creditCard = creditCard;
+        this.cvv = cvv;
+        this.category = category;
+    }
 
     public Purchase() {
-    }
-
-    public Purchase(String date, String credit_card, int cvv, String category) {
-        this.date = date;
-        this.credit_card = credit_card;
-        this.cvv = cvv;
-        this.category = category;
-    }
-
-    public Purchase(String date, String credit_card, int cvv, String category, Customer customer) {
-        this.date = date;
-        this.credit_card = credit_card;
-        this.cvv = cvv;
-        this.category = category;
-        this.customer = customer;
     }
 
     public int getId() {
@@ -53,6 +46,14 @@ public class Purchase {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public String getDate() {
@@ -64,11 +65,11 @@ public class Purchase {
     }
 
     public String getCredit_card() {
-        return credit_card;
+        return creditCard;
     }
 
     public void setCredit_card(String credit_card) {
-        this.credit_card = credit_card;
+        this.creditCard = credit_card;
     }
 
     public int getCvv() {
@@ -86,17 +87,4 @@ public class Purchase {
     public void setCategory(String category) {
         this.category = category;
     }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 }
-
-
-
-
-
