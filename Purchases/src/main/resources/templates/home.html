@@ -3,10 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="formatting.css">
 </head>
 <body>
-<table class = center cellpadding = "5" cellspacing = "5">
+<br><br>
+<h2>
+<a href="/">All</a>
+<a href="/?category=Alcohol">Alchohol</a>
+<a href="/?category=Furniture">Furniture</a>
+<a href="/?category=Toiletries">Toiletries</a>
+<a href="/?category=Jewelry">Jewelry</a>
+<a href="/?category=Shoes">Shoes</a>
+<a href="/?category=Food">Food</a>
+</h2>
+<br><br>
 
+<table class = center cellpadding = "5" cellspacing = "5">
     <tr>
         <th>Name</th>
         <th>Email</th>
@@ -20,7 +32,7 @@
         <td>{{customer.name}}</td>
         <td>{{customer.email}}</td>
         <td>{{category}}</td>
-        <td>{{creditCard}}</td>
+        <td>{{credit_card}}</td>
         <th>{{cvv}}</th>
         <th>{{date}}</th>
     </tr>

@@ -69,10 +69,13 @@ public class PurchaseSpringController {
         }
     }
     @RequestMapping(path="/", method = RequestMethod.GET)
-    public String home(Model model) {
+    public String home(Model model, String category) {
         List<Purchase> purchaseList;
-        purchaseList = (List)purchases.findAll();
-
+        if(category != null) {
+            purchaseList = purchases.findByCategory(category);
+        }else {
+            purchaseList = (List) purchases.findAll();
+        }
         model.addAttribute("purchased", purchaseList);
         return "home";
     }

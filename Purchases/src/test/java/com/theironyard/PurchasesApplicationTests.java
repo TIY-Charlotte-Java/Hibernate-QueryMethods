@@ -12,8 +12,4 @@ public class PurchasesApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-	@Test
-	public void cusserImpts() {
-	}
-
 }
