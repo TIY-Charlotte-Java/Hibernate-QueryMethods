@@ -29,22 +29,6 @@ public class Purchase {
     public Purchase() {
     }
 
-    public Purchase(int id, Customer customer, String date, String creditcard, String cvv, String category) {
-        this.id = id;
-        this.customer = customer;
-        this.date = date;
-        this.creditcard = creditcard;
-        this.cvv = cvv;
-        this.category = category;
-    }
-
-    public Purchase(String date, String creditcard, String cvv, String category) {
-        this.date = date;
-        this.creditcard = creditcard;
-        this.cvv = cvv;
-        this.category = category;
-    }
-
     public Purchase(Customer customer, String date, String creditcard, String cvv, String category) {
         this.customer = customer;
         this.date = date;

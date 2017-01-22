@@ -22,19 +22,6 @@ public class Customer {
 
     public Customer() {}
 
-    public Customer(int id, String name, String email, List<Purchase> purchases) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.purchases = purchases;
-    }
-
-    public Customer(String name, String email, List<Purchase> purchases) {
-        this.name = name;
-        this.email = email;
-        this.purchases = purchases;
-    }
-
     public Customer(String name, String email) {
         this.name = name;
         this.email = email;
